@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package general;
+
+option go_package = "pb/general";
+
+message GeneralMessage {
+    uint32 Type = 1;
+    bytes Content = 2;
+}
+
+message FragmentMessage {
+    uint32 message_id = 1;    // 消息ID
+    uint32 fragment_id = 2;   // 当前分片的序号
+    uint32 total_fragments = 3; // 总分片数量
+    bytes fragment_data = 4; // 分片的数据
+}
