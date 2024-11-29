@@ -35,8 +35,8 @@ The `Sender` interface provides a `SendMessage` function to send large messages.
 ```go
 import (
     "net"
-    "udpbuf"
-    "udpbuf/pb/general"
+    "github.com/scarletborder/udpbuf"
+    "github.com/scarletborder/udpbuf/message"
 )
 
 func main() {
@@ -45,7 +45,7 @@ func main() {
 
     sender := udpbuf.NewSender()
 
-    message := &general.GeneralMessage{
+    message := &message.GeneralMessage{
         Content: "Hello, UDP!",
     }
 
@@ -63,8 +63,8 @@ The `Receiver` interface provides an asynchronous `ReceiveMessage` function with
 import (
     "fmt"
     "net"
-    "udpbuf"
-    "udpbuf/pb/general"
+    "github.com/scarletborder/udpbuf"
+    "github.com/scarletborder/udpbuf/message"
 )
 
 func main() {
@@ -73,7 +73,7 @@ func main() {
 
     receiver := udpbuf.NewReceiver()
 
-    cancelFunc, errorChan := receiver.ReceiveMessage(conn, func(msg *general.GeneralMessage) {
+    cancelFunc, errorChan := receiver.ReceiveMessage(conn, func(msg *message.GeneralMessage) {
         fmt.Println("Received message:", msg.Content)
     })
 
@@ -135,7 +135,7 @@ go get github.com/scarletborder/udpbuf
 import (
     "net"
     "github.com/scarletborder/udpbuf"
-    "github.com/scarletborder/udpbuf/pb/general"
+    "github.com/scarletborder/udpbuf/message"
 )
 
 func main() {
@@ -162,8 +162,8 @@ func main() {
 import (
     "fmt"
     "net"
-    "udpbuf"
-    "udpbuf/pb/general"
+    "github.com/scarletborder/udpbuf"
+    "github.com/scarletborder/udpbuf/message"
 )
 
 func main() {
@@ -172,7 +172,7 @@ func main() {
 
     receiver := udpbuf.NewReceiver()
 
-    cancelFunc, errorChan := receiver.ReceiveMessage(conn, func(msg *general.GeneralMessage) {
+    cancelFunc, errorChan := receiver.ReceiveMessage(conn, func(msg *message.GeneralMessage) {
         fmt.Println("接收到消息:", msg.Content)
     })
 
